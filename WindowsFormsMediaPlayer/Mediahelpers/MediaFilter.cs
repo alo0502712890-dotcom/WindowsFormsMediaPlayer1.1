@@ -33,5 +33,23 @@ namespace WindowsFormsMediaPlayer.Mediahelpers
             });
             return filter;
         }
+
+        public static bool IsMediaFile(string ext)
+        {
+            string[] allExt = new string[videoExtensions.Length + audioExtensions.Length];
+            Array.Copy(videoExtensions, allExt, videoExtensions.Length);
+            Array.Copy(audioExtensions, allExt, audioExtensions.Length);
+
+            return allExt.Contains(ext);
+
+            /*foreach (var item in allExt)
+            {
+                if(item == ext)
+                {
+                    return true;
+                }
+            }
+            return false;*/
+        }
     }
 }

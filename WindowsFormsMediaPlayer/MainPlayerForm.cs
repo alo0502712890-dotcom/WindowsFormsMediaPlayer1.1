@@ -17,6 +17,10 @@ namespace WindowsFormsMediaPlayer
         private LibVLC _libVLC;
         private MediaPlayer _mediaPlayer;
 
+        private PlayListController _playListController;
+
+        private PlayListsForm _playlistsForm;
+
         private const int DefaultVolume = 50;
         private int _lastNonZeroVolume = DefaultVolume;
 
@@ -31,6 +35,8 @@ namespace WindowsFormsMediaPlayer
             _libVLC = new LibVLC();
             _mediaPlayer = new MediaPlayer(_libVLC);
             videoView_Player.MediaPlayer = _mediaPlayer;
+
+            _playListController = new PlayListController();
 
             button_SoundMute.Image = null;                      
             button_SoundMute.BackgroundImage = _iconOn;          
@@ -132,6 +138,49 @@ namespace WindowsFormsMediaPlayer
                 base.OnFormClosed(e);
             }
         }
+        private void ShowPlaylists()
+        {
+            if (_playlistsForm == null || _playlistsForm.IsDisposed)
+            {
+                _playlistsForm = new PlayListsForm();
+              
+                _playlistsForm.StartPosition = FormStartPosition.Manual;
+                _playlistsForm.Location = new Point(this.Right + 5, this.Top);
 
+                _playlistsForm.FormClosing += (s, e) =>
+                {
+                    if (e.CloseReason == CloseReason.UserClosing)
+                    {
+                        e.Cancel = true;    
+                        _playlistsForm.Hide(); 
+                    }
+                };
+            }
+
+            if (!_playlistsForm.Visible)
+                _playlistsForm.Show(this);   // немодально
+            else
+                _playlistsForm.BringToFront();
+        }
+
+        private void TogglePlaylists()
+        {
+            if (_playlistsForm == null || _playlistsForm.IsDisposed)
+            {
+                ShowPlaylists();
+                return;
+            }
+
+            if (_playlistsForm.Visible)
+                _playlistsForm.Hide();
+            else
+                _playlistsForm.Show(this);
+        }
+
+
+        private void playlistsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            TogglePlaylists();
+        }
     }
 }

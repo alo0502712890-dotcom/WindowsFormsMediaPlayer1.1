@@ -94,6 +94,7 @@
             this.playlistsToolStripMenuItem.Name = "playlistsToolStripMenuItem";
             this.playlistsToolStripMenuItem.Size = new System.Drawing.Size(75, 24);
             this.playlistsToolStripMenuItem.Text = "Playlists";
+            this.playlistsToolStripMenuItem.Click += new System.EventHandler(this.playlistsToolStripMenuItem_Click);
             // 
             // helpToolStripMenuItem
             // 
