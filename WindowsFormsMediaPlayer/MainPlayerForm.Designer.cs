@@ -178,6 +178,7 @@
             this.button_Next.Size = new System.Drawing.Size(80, 74);
             this.button_Next.TabIndex = 3;
             this.button_Next.UseVisualStyleBackColor = true;
+            this.button_Next.Click += new System.EventHandler(this.button_Next_Click);
             // 
             // button_PauseStop
             // 
@@ -190,6 +191,7 @@
             this.button_PauseStop.Size = new System.Drawing.Size(80, 74);
             this.button_PauseStop.TabIndex = 2;
             this.button_PauseStop.UseVisualStyleBackColor = true;
+            this.button_PauseStop.Click += new System.EventHandler(this.button_PauseStop_Click);
             // 
             // button_Prev
             // 
@@ -202,6 +204,7 @@
             this.button_Prev.Size = new System.Drawing.Size(80, 74);
             this.button_Prev.TabIndex = 1;
             this.button_Prev.UseVisualStyleBackColor = true;
+            this.button_Prev.Click += new System.EventHandler(this.button_Prev_Click);
             // 
             // button1
             // 
@@ -214,6 +217,7 @@
             this.button1.Size = new System.Drawing.Size(80, 74);
             this.button1.TabIndex = 0;
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // videoView_Player
             // 

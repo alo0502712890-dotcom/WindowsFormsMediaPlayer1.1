@@ -1,8 +1,5 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace WindowsFormsMediaPlayer
 {
@@ -10,30 +7,34 @@ namespace WindowsFormsMediaPlayer
     {
         public string Name { get; set; }
 
-        private List<MediaTrack> _mediaTracks;
+        private readonly List<MediaTrack> _mediaTracks = new List<MediaTrack>();
+        public IReadOnlyList<MediaTrack> Tracks => _mediaTracks.AsReadOnly();
 
-        public MediaPlayList()
-        {
-            _mediaTracks = new List<MediaTrack>();
-        }
+        public MediaPlayList() { }
 
         public MediaPlayList(string name)
         {
-            _mediaTracks = new List<MediaTrack>();
             Name = name;
         }
 
         public void AddTrack(MediaTrack track)
         {
+            if (track == null) return;
             _mediaTracks.Add(track);
         }
-        public void AddTrackRange(IEnumerable<MediaTrack> tracks)
+
+        public void AddTracks(IEnumerable<MediaTrack> tracks)
         {
+            if (tracks == null) return;
             _mediaTracks.AddRange(tracks);
         }
+
         public void RemoveTrack(MediaTrack track)
         {
+            if (track == null) return;
             _mediaTracks.Remove(track);
         }
+
+        public override string ToString() => Name;
     }
 }

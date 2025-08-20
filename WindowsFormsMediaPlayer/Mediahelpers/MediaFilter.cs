@@ -25,31 +25,24 @@ namespace WindowsFormsMediaPlayer.Mediahelpers
 
         public static string GetOpenMediFilter()
         {
-            string filter = string.Join("|", new string[]
-            {
-                FormatFilter("Video", videoExtensions),
-                FormatFilter("Аудио", audioExtensions),
-                FormatFilter("Все файлы", new string[] { ".*" })
-            });
-            return filter;
+
+            string vids = string.Join(";", videoExtensions.Select(e => "*" + e));
+            string auds = string.Join(";", audioExtensions.Select(e => "*" + e));
+            string all = string.Join(";", videoExtensions.Concat(audioExtensions).Select(e => "*" + e));
+
+
+            return $"Media files|{all}|Audio|{auds}|Video|{vids}|All files|*.*";
         }
 
-        public static bool IsMediaFile(string ext)
+        public static bool IsMediaFile(string extension)
         {
-            string[] allExt = new string[videoExtensions.Length + audioExtensions.Length];
-            Array.Copy(videoExtensions, allExt, videoExtensions.Length);
-            Array.Copy(audioExtensions, allExt, audioExtensions.Length);
+            if (string.IsNullOrWhiteSpace(extension)) return false;
 
-            return allExt.Contains(ext);
+            string ext = extension.StartsWith(".")
+                ? extension.ToLowerInvariant()
+                : ("." + extension.ToLowerInvariant());
 
-            /*foreach (var item in allExt)
-            {
-                if(item == ext)
-                {
-                    return true;
-                }
-            }
-            return false;*/
+            return videoExtensions.Contains(ext) || audioExtensions.Contains(ext);
         }
     }
 }

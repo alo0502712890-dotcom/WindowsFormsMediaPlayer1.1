@@ -13,7 +13,10 @@ namespace WindowsFormsMediaPlayer
         private string _pathToFile = String.Empty;
         public string MediaPath
         {
-            get { return _pathToFile; }
+            get
+            {
+                return _pathToFile;
+            }
             set
             {
                 if (MediaFilter.IsMediaFile(Path.GetExtension(value)))
@@ -26,5 +29,10 @@ namespace WindowsFormsMediaPlayer
                 }
             }
         }
+        public override string ToString()
+        {
+            try { return System.IO.Path.GetFileName(_pathToFile); } catch { return _pathToFile; }
+        }
     }
 }
+            

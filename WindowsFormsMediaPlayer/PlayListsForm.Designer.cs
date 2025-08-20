@@ -130,6 +130,7 @@
             this.toolStripButton_Add.Name = "toolStripButton_Add";
             this.toolStripButton_Add.Size = new System.Drawing.Size(29, 25);
             this.toolStripButton_Add.Text = "toolStripButton1";
+            this.toolStripButton_Add.Click += new System.EventHandler(this.toolStripButton_Add_Click);
             // 
             // toolStripButton_Edit
             // 
@@ -139,6 +140,7 @@
             this.toolStripButton_Edit.Name = "toolStripButton_Edit";
             this.toolStripButton_Edit.Size = new System.Drawing.Size(29, 25);
             this.toolStripButton_Edit.Text = "toolStripButton2";
+            this.toolStripButton_Edit.Click += new System.EventHandler(this.toolStripButton_Edit_Click);
             // 
             // toolStripButton_Delete
             // 
@@ -148,6 +150,7 @@
             this.toolStripButton_Delete.Name = "toolStripButton_Delete";
             this.toolStripButton_Delete.Size = new System.Drawing.Size(29, 25);
             this.toolStripButton_Delete.Text = "toolStripButton3";
+            this.toolStripButton_Delete.Click += new System.EventHandler(this.toolStripButton_Delete_Click);
             // 
             // toolStripComboBox_PlayLists
             // 
@@ -207,6 +210,7 @@
             this.listBox_MediaRecords.Name = "listBox_MediaRecords";
             this.listBox_MediaRecords.Size = new System.Drawing.Size(269, 472);
             this.listBox_MediaRecords.TabIndex = 4;
+            this.listBox_MediaRecords.DoubleClick += new System.EventHandler(this.listBox_MediaRecords_DoubleClick);
             // 
             // PlayListsForm
             // 
